@@ -222,6 +222,9 @@ nav {
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
+  box-sizing: border-box;
+  overflow-x: hidden;
 }
 .nav {
   justify-content: center;
@@ -1326,6 +1329,7 @@ a#calltrap-btn:hover span {
   margin: 0px;
   padding: 20px;
   background-color: #6d6e71;
+  overflow-x: hidden;
 }
 .form-lh {
   display: flex;
@@ -1348,4 +1352,8 @@ a#calltrap-btn:hover span {
   text-align: center;
   display: flex;
   justify-content: center;
+}
+
+.chitietsanpham {
+  overflow-x: hidden;
 }
