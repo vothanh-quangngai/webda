@@ -341,25 +341,25 @@
 
  <div class="form-lienhe row">
       <div class="form-lh col-12 col-sm-6" data-aos="fade-right">
-        <form class='form ladi-form' onsubmit="submitted=true;" target="hidden_iframe"   role="form" id="ss-form" method="GET" 
+        <form class='form ladi-form' name="gform" onsubmit="return validateForm()" target="hidden_iframe"   role="form" id="ss-form" method="GET"
         action="https://script.google.com/macros/s/AKfycbyZjHDDE6JUnHJpd-gvwicCcbjalrmYhDOZJm9YASJdmk3hQ1t5omaLp_C500JxW9qc-Q/exec">
           <div class="title">ĐỂ LẠI THÔNG TIN NGAY NHẬN NHIỀU ƯU ĐÃI</div>
           <div class="input-container ic1">
-            <input id="hoten" class="input" type="text" placeholder=" " name="hoten"/>
+            <input id="hoten" class="input" type="text" placeholder=" " name="hoten" />
             <div class="cut"></div>
             <label for="hoten" class="placeholder">Họ và tên...</label>
           </div>
           <div class="input-container ic2">
-            <input id="dienthoai" class="input" type="text" placeholder=" " name="dienthoai"/>
+            <input id="dienthoai" class="input" type="text" placeholder=" " name="dienthoai" />
             <div class="cut"></div>
             <label for="dienthoai" class="placeholder">Số Điện Thoại</label>
           </div>
           <div class="input-container ic2">
-            <input id="loinhan" class="input" type="text" placeholder=" " name="loinhan"/>
+            <input id="loinhan" class="input" type="text" placeholder=" " name="loinhan" />
             <div class="cut cut-short"></div>
             <label for="loinhan" class="placeholder">Lời Nhắn </label>
           </div>
-          <button type="text" class="submit"  onclick="myFunction()">GỬI THÔNG TIN</button>
+          <button type="text" class="submit" >GỬI THÔNG TIN</button>
       
         </form>
       </div>
@@ -371,7 +371,7 @@
      <script type="text/javascript">
       var submitted=false;
     </script>
-    <iframe id="hidden_iframe" name="hidden_iframe" onload="if(submitted){alert('Bạn đã gửi thông tin thành công tới hệ thống!');}" style="display: none;"></iframe>
+    <iframe id="hidden_iframe" name="hidden_iframe" onload="if(submitted){onReset()}" style="display: none;"></iframe>
     <!--Cách 2: HIỂN THỊ THÔNG BÁO DẠNG LINK-->
      
 <div class=" wow fadeInRight animated" style="visibility: visible; animation-name: fadeInRight;">
@@ -380,12 +380,27 @@
     
   </script>
 
-  <iframe id="hidden_iframe" name="hidden_iframe" onload="if(submitted){window.location='thongbao.html';}" style="display: none;"></iframe>
+  <iframe id="hidden_iframe" name="hidden_iframe" onload="if(submitted){return false}" style="display: none;"></iframe>
   <!--Cách 2: End HIỂN THỊ THÔNG BÁO DẠNG LINK-->
     <script>
-      
-      function myFunction() {
-        document.getElementById("ss-form").reset();
+      function validateForm() {
+        let name = document.getElementById("hoten").value;
+        let phoneNumber  = document.getElementById("dienthoai").value;
+        let textMsg = document.getElementById("loinhan").value;
+        if(name ===""|| phoneNumber === "" || textMsg === ""){
+          alert("Vui lòng điền đầy đủ thông tin");
+          return  false;
+        }
+        else{
+          submitted = true;
+          return true;
+        }
+
+      }
+      function onReset() {
+        alert('Bạn đã gửi thông tin thành công tới hệ thống!')
+        var frm = document.getElementById("ss-form")
+        frm.reset();  // Reset all form data
       }
       </script>
     <div class="footer row " id="lienhe">
