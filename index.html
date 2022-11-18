@@ -334,35 +334,60 @@
         </div>
       </div>
     </div>
+   
     <div class="title-form">
       <h1>Để Lại Thông Tin Để Được Tư Vấn</h1>
     </div>
-    <div class="form-lienhe row">
+
+ <div class="form-lienhe row">
       <div class="form-lh col-12 col-sm-6" data-aos="fade-right">
-        <div class="form ">
+        <form class='form ladi-form' onsubmit="submitted=true;" target="hidden_iframe"   role="form" id="ss-form" method="GET" 
+        action="https://script.google.com/macros/s/AKfycbyZjHDDE6JUnHJpd-gvwicCcbjalrmYhDOZJm9YASJdmk3hQ1t5omaLp_C500JxW9qc-Q/exec">
           <div class="title">ĐỂ LẠI THÔNG TIN NGAY NHẬN NHIỀU ƯU ĐÃI</div>
           <div class="input-container ic1">
-            <input id="firstname" class="input" type="text" placeholder=" " />
+            <input id="hoten" class="input" type="text" placeholder=" " name="hoten"/>
             <div class="cut"></div>
-            <label for="firstname" class="placeholder">Họ và tên...</label>
+            <label for="hoten" class="placeholder">Họ và tên...</label>
           </div>
           <div class="input-container ic2">
-            <input id="lastname" class="input" type="text" placeholder=" " />
+            <input id="dienthoai" class="input" type="text" placeholder=" " name="dienthoai"/>
             <div class="cut"></div>
-            <label for="lastname" class="placeholder">Số Điện Thoại</label>
+            <label for="dienthoai" class="placeholder">Số Điện Thoại</label>
           </div>
           <div class="input-container ic2">
-            <input id="email" class="input" type="text" placeholder=" " />
+            <input id="loinhan" class="input" type="text" placeholder=" " name="loinhan"/>
             <div class="cut cut-short"></div>
-            <label for="email" class="placeholder">Lời Nhắn </label>
+            <label for="loinhan" class="placeholder">Lời Nhắn </label>
           </div>
-          <button type="text" class="submit">GỬI THÔNG TIN</button>
-        </div>
+          <button type="text" class="submit"  onclick="myFunction()">GỬI THÔNG TIN</button>
+      
+        </form>
       </div>
       <div class="img-form col-12 col-sm-6" data-aos="fade-left">
         <img src="/images/28_grande.jpg" alt="" width="100%">
       </div>
     </div>
+     <!--Cách 1: HIỂN THỊ THÔNG BÁO DẠNG POUPUP -->
+     <script type="text/javascript">
+      var submitted=false;
+    </script>
+    <iframe id="hidden_iframe" name="hidden_iframe" onload="if(submitted){alert('Bạn đã gửi thông tin thành công tới hệ thống!');}" style="display: none;"></iframe>
+    <!--Cách 2: HIỂN THỊ THÔNG BÁO DẠNG LINK-->
+     
+<div class=" wow fadeInRight animated" style="visibility: visible; animation-name: fadeInRight;">
+  <script type="text/javascript">
+    var submitted=false;
+    
+  </script>
+
+  <iframe id="hidden_iframe" name="hidden_iframe" onload="if(submitted){window.location='thongbao.html';}" style="display: none;"></iframe>
+  <!--Cách 2: End HIỂN THỊ THÔNG BÁO DẠNG LINK-->
+    <script>
+      
+      function myFunction() {
+        document.getElementById("ss-form").reset();
+      }
+      </script>
     <div class="footer row " id="lienhe">
       <div class="name-company col-12 col-md-6">
           <div class="title-footer">CÔNG TY TNHH ADAL HOME</div>
