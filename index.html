@@ -383,14 +383,32 @@
   <iframe id="hidden_iframe" name="hidden_iframe" onload="if(submitted){return false}" style="display: none;"></iframe>
   <!--Cách 2: End HIỂN THỊ THÔNG BÁO DẠNG LINK-->
     <script>
+      function validPhone(phoneInput){
+        const re = /((09|03|07|08|05)+([0-9]{8})\b)/g;
+        return re.test(phoneInput);
+      }
       function validateForm() {
         let name = document.getElementById("hoten").value;
         let phoneNumber  = document.getElementById("dienthoai").value;
+        let valid = validPhone(phoneNumber);
         let textMsg = document.getElementById("loinhan").value;
-        if(name ===""|| phoneNumber === "" || textMsg === ""){
-          handelError();
+        if(name ===""){
+          handelError("Vui lòng nhập họ tên");
           return  false;
         }
+        if(phoneNumber ===""){
+          handelError("Vui lòng nhập Số điện thoại");
+          return  false;
+        }
+        if(valid === false && phoneNumber !==''){
+          handelError("Số điện thoại không đúng định dạng");
+          return  false;
+        }
+        if(textMsg ===""){
+          handelError("Vui lòng nhập lời nhắn");
+          return  false;
+        }
+
         else{
           submitted = true;
           return true;
@@ -398,8 +416,7 @@
 
       }
       function onReset() {
-        handelSuccess();
-        // alert('Bạn đã gửi thông tin thành công tới hệ thống!')
+        handelSuccess("Bạn đã gửi thành công thông tin lên hệ thống");
         var frm = document.getElementById("ss-form")
         frm.reset();  // Reset all form data
       }
@@ -451,16 +468,16 @@
     let modalFooter = document.getElementsByClassName("modal-footer")[0];
 
 
-    const handelSuccess = () =>{
+    const handelSuccess = (msg) =>{
       modal.style.display = "block";
-      document.getElementById("mess").innerHTML = `Bạn đã gửi thành công lên hệ thống`
+      document.getElementById("mess").innerHTML = `${msg}`
 
     }
-    const handelError = () =>{
+    const handelError = (msg) =>{
       modal.style.display = "block";
       modalHeader.classList.add("modalError");
       modalFooter.classList.add("modalError")
-      document.getElementById("mess").innerHTML = `Vui lòng điền đầy đủ thông tin`
+      document.getElementById("mess").innerHTML = `${msg}`
 
     }
     const handleClose = () =>{

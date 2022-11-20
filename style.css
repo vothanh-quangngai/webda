@@ -86,7 +86,9 @@ body {
 .modalError{
   background-color: #e55454;
 }
-
+.errorPhone{
+  border: red 2px solid;
+}
 nav {
   height: 6rem !important;
   width: 100vw !important;
