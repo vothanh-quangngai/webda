@@ -388,7 +388,7 @@
         let phoneNumber  = document.getElementById("dienthoai").value;
         let textMsg = document.getElementById("loinhan").value;
         if(name ===""|| phoneNumber === "" || textMsg === ""){
-          alert("Vui lòng điền đầy đủ thông tin");
+          handelError();
           return  false;
         }
         else{
@@ -398,7 +398,8 @@
 
       }
       function onReset() {
-        alert('Bạn đã gửi thông tin thành công tới hệ thống!')
+        handelSuccess();
+        // alert('Bạn đã gửi thông tin thành công tới hệ thống!')
         var frm = document.getElementById("ss-form")
         frm.reset();  // Reset all form data
       }
@@ -424,6 +425,55 @@
         </ul>
       </div>
     </div>
+
+  <!-- The Modal -->
+  <div id="myModal" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 style="text-align: left" id="notification">Thông báo:</h5>
+      </div>
+      <div class="modal-body">
+        <p id="mess"></p>
+      </div>
+      <div class="modal-footer">
+        <button class="buttonModal" onclick="handleClose()">Đóng</button>
+      </div>
+    </div>
+
+  </div>
+  <script>
+    // Copyright (c) 2022 Phuong My Chi Entertainment Co.,Ltd
+
+    let  modal = document.getElementById("myModal");
+    let modalHeader = document.getElementsByClassName("modal-header")[0];
+    let modalFooter = document.getElementsByClassName("modal-footer")[0];
+
+
+    const handelSuccess = () =>{
+      modal.style.display = "block";
+      document.getElementById("mess").innerHTML = `Bạn đã gửi thành công lên hệ thống`
+
+    }
+    const handelError = () =>{
+      modal.style.display = "block";
+      modalHeader.classList.add("modalError");
+      modalFooter.classList.add("modalError")
+      document.getElementById("mess").innerHTML = `Vui lòng điền đầy đủ thông tin`
+
+    }
+    const handleClose = () =>{
+      modal.style.display = "none";
+      modalHeader.classList.remove("modalError")
+      modalFooter.classList.remove("modalError");
+    }
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+  </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="/script.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
